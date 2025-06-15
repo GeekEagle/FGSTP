@@ -34,9 +34,12 @@ Please put the pretrain model into the ./pretrain folder, and please change the 
 
 If you find this code useful, please consider citing our work.
 
-@inproceedings{zhao2025fgstp,
-  title={Fine-grained Spatial-Temporal Perception for Gas Leak Segmentation},
-  author={Zhao, Xinlong and Du, Shan},
-  booktitle={IEEE ICIP},
-  year={2025}
+@misc{zhao2025fgstp,
+      title={Fine-grained spatial-temporal perception for gas leak segmentation}, 
+      author={Xinlong Zhao and Shan Du},
+      year={2025},
+      eprint={2505.00295},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2505.00295}, 
 }
