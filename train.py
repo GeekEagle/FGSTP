@@ -19,9 +19,6 @@ from utils.utils import clip_gradient, adjust_lr
 from tensorboardX import SummaryWriter
 
 def structure_loss(pred, mask):
-    """
-    loss function (ref: F3Net-AAAI-2020)
-    """
     weit = 1 + 5 * torch.abs(F.avg_pool2d(mask, kernel_size=31, stride=1, padding=15) - mask)
     wbce = F.binary_cross_entropy_with_logits(pred, mask, reduce='none')
     wbce = (weit * wbce).sum(dim=(2, 3)) / weit.sum(dim=(2, 3))
@@ -163,7 +160,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--epoch', type=int, default=150, help='epoch number')
+    parser.add_argument('--epoch', type=int, default=60, help='epoch number')
     parser.add_argument('--trainsplit', type=str, default='train', help='train from checkpoints')
     parser.add_argument('--valsplit', type=str, default='val', help='train from checkpoints')
     parser.add_argument('--lr', type=float, default=1e-4, help='learning rate')
@@ -171,19 +168,18 @@ if __name__ == '__main__':
     parser.add_argument('--trainsize', type=int, default=352, help='training dataset size')
     parser.add_argument('--clip', type=float, default=0.5, help='gradient clipping margin')
     parser.add_argument('--decay_rate', type=float, default=0.1, help='decay rate of learning rate')
-    parser.add_argument('--decay_epoch', type=int, default=120, help='every n epochs decay learning rate')
+    parser.add_argument('--decay_epoch', type=int, default=45, help='every n epochs decay learning rate')
     parser.add_argument('--pretrained_cod10k', default='./pretrain/cod10k_encoder.pth', help='path to the pretrained Swin Transformer')
     parser.add_argument('--resume', type=str, default=None, help='train from checkpoints')
     parser.add_argument('--cuda', type=str, default='cuda:0', help='use cuda? Default=True')
     parser.add_argument('--seed', type=int, default=2025, help='random seed to use. Default=123')
-    parser.add_argument('--dataset',  type=str, default='IGS-Few')
+    parser.add_argument('--dataset',  type=str, default='GasVid')
     parser.add_argument('--threads', type=int, default=64, help='number of threads for data loader to use')
     parser.add_argument('--valonly', action='store_true', default=False, help='skip training during training')
     opt = parser.parse_args()
 
     # build the model
     model = FGSTP(opt).to(opt.cuda)
-
 
     if opt.resume is not None:
         model = load_model(model=model, model_file=opt.resume, is_restore=True)
