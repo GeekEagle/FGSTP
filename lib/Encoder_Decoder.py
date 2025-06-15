@@ -155,7 +155,7 @@ class ReverseStage(nn.Module):
 
         return y
 
-class FeatureExtraction(nn.Module):
+class Encoder(nn.Module):
     def __init__(self, channel=32, pvt_pretrained=True, size_img=224):
         super(FeatureExtraction, self).__init__()
         self.pretrained = pvt_pretrained
@@ -207,8 +207,7 @@ class Decoder(nn.Module):
 
     def forward(self, x):
         x2_rfb, x3_rfb, x4_rfb = x[0],x[1], x[2]
-        # Receptive Field Block (enhanced)
-
+        
         # Neighbourhood Connected Decoder
         S_g = self.NCD(x4_rfb, x3_rfb, x2_rfb)
         S_g_pred = F.interpolate(S_g, scale_factor=8, mode='bilinear')    # Sup-1 (bs, 1, 44, 44) -> (bs, 1, 352, 352)
@@ -234,13 +233,12 @@ class Decoder(nn.Module):
         return S_g_pred, S_5_pred, S_4_pred, S_3_pred
 
 class Backbone(nn.Module):
-    # res2net based encoder decoder
     def __init__(self, channel=32, pvtv2_pretrained=True, imgsize=224):
         super(Backbone, self).__init__()
         self.channel = channel
         self.imgsize = imgsize
         self.pvtv2_pretrained = pvtv2_pretrained
-        self.encoder = FeatureExtraction(self.channel, self.pvtv2_pretrained, self.imgsize)
+        self.encoder = Encoder(self.channel, self.pvtv2_pretrained, self.imgsize)
         self.decoder  = Decoder(self.channel)
     def forward(self, x):
         fmap = self.encoder(x)
