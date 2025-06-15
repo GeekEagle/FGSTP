@@ -37,7 +37,6 @@ def show_pictures(res, name, vis_path, save_path, image_path):
     cv2.imwrite(vis_file, blend)
 
 def compute_iou(pred_mask, gt_mask):
-    """Calculate IoU between a predicted mask and ground truth mask."""
     pred_mask = pred_mask.astype(bool)
     gt_mask = gt_mask.astype(bool)
     intersection = np.logical_and(pred_mask, gt_mask).sum()
@@ -55,7 +54,7 @@ def f1_score(groundtruth, prediction):
 
 if __name__ == '__main__':
     test_loader = normal_test(opt)
-    save_root = './igsfew_res'
+    save_root = './gasvid_res'
     model = FGSTP(opt).to(opt.cuda)
 
     model.load_state_dict(torch.load(opt.pth_path))
