@@ -1,6 +1,6 @@
 # FGSTP
 
-Paper: [arXiv](https://www.arxiv.org/pdf/2505.00295)
+Paper: [arXiv](https://www.arxiv.org/abs/2505.00295)
 
 This work is accepted by [IEEE ICIP 2025](https://2025.ieeeicip.org/)
 
