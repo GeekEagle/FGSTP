@@ -1,4 +1,4 @@
-# FGSTP
+# FGSTP: Fine-grained Spatial-Temporal Perception for Gas Leak Segmentation
 
 Paper: [arXiv](https://www.arxiv.org/abs/2505.00295)
 
