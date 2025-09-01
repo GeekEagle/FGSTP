@@ -65,10 +65,7 @@ If you find this code useful, please consider citing our work.
   booktitle={2025 IEEE International Conference on Image Processing (ICIP)}, 
   title={Fine-Grained Spatial-Temporal Perception for Gas Leak Segmentation}, 
   year={2025},
-  volume={},
-  number={},
   pages={869-874},
-  keywords={Adaptation models;Visualization;Image segmentation;Accuracy;Shape;Motion segmentation;Noise;Object segmentation;Video surveillance;Decoding;Gas leak segmentation;non-rigid and blurry object segmentation;video surveillance system},
   doi={10.1109/ICIP55913.2025.11084304}}
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2505.00295}, 
