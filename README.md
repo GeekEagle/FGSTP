@@ -60,14 +60,12 @@ python test.py
 
 If you find this code useful, please consider citing our work.
 ```
-@INPROCEEDINGS{11084304,
+@INPROCEEDINGS{zhao_fgstp,
   author={Zhao, Xinlong and Du, Shan},
   booktitle={2025 IEEE International Conference on Image Processing (ICIP)}, 
   title={Fine-Grained Spatial-Temporal Perception for Gas Leak Segmentation}, 
   year={2025},
   pages={869-874},
-  doi={10.1109/ICIP55913.2025.11084304}}
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2505.00295}, 
+  doi={10.1109/ICIP55913.2025.11084304}
 }
 ```
